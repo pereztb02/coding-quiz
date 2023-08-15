@@ -7,17 +7,27 @@
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
   </head>
   <body>
-    <header>
+    <!-- <header>
       <div class= "large-font">Coding Quiz</div>
       <button class="start-button">Start</button>
-    </header>
+    </header> -->
 
     <main>
       <section>
-        <div class="card question">
-          <div class="large-font current-question">Press Start</div>
-        </div>
+      </div>
+      <button class="large-font start-button">Press Start</button>
+      </div>
+        <div class="quiz-container">
+          <div class="large-font current-question"></div>
+        
+        <div class = "choices"></div>
       </section>
+
+      <div class= "timer-container">
+        <div class = "timer-text">
+        <div id="timer" class="large-font">Time: <span id="time-left"></span></div>
+        
+      </div>
 
       <section>
         <div class="card results">
@@ -28,11 +38,7 @@
         </div>
           <button class="reset-button">Reset Score</button>
       </div>
-          <div class= "card timer">
-            <div class = "timer-text">
-            <div class="large-font time-left">100</div>
-            <h3>seconds remaining</h3>
-          </div>
+        
         
           </div>
         </div>
