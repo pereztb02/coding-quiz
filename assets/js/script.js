@@ -1,4 +1,4 @@
-const currentQuestion = document.querySelector(".current-question");
+var currentQuestion = document.querySelector(".current-question");
 const choiceA = document.getElementById("choiceA");
 const choiceB = document.getElementById("choiceB");
 const choiceC = document.getElementById("choiceC");
@@ -7,7 +7,8 @@ const right = document.querySelector(".correct");
 const wrong = document.querySelector(".incorrect");
 const timerElement = document.querySelector(".timer");
 const startButton = document.querySelector(".start-button");
-const resetButton = document.querySelector(".reset-button")
+const resetButton = document.querySelector(".reset-button");
+const answerButtons = document.querySelectorAll(".answer-choice")
 
 
 //Array of questions
@@ -72,7 +73,7 @@ function startQuiz() {
 
 function displayQuestion() {
   var current = questions[currentQuestionIndex];
-  currentQuestion.textContent = current.currentQuestion;
+  currentQuestion.textContent = current.question;
   // Remove existing choice buttons
   choiceA.style.display = "none";
   choiceB.style.display = "none";
@@ -87,8 +88,29 @@ function displayQuestion() {
   }
 
 }
+answerButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    var selectedAnswer = button.textContent;
+    var currentQuestion = questions[currentQuestionIndex];
+    var correctAnswer = currentQuestion.correctAnswer;
+    console.log("selected answer:", selectedAnswer);
+    console.log("correct answer:", correctAnswer);
+
+    if (String(selectedAnswer).trim() === String(correctAnswer).trim()) {
+      // handles correct answer
+      console.log("correct")
+    } else {
+      // handles incorrect answer
+      console.log("incorrect");
+    }
+    // next question
+    currentQuestion++;
+    displayQuestion();
+  });
+});
+
 // function checkAnswer(selectedIndex) {
-//   const question = questions[currentQuestionIndex];
+//   var checkQue = questions[currentQuestionIndex];
 //   if (selectedIndex === question.correctAnswer) {
 //       // Handle correct answer
 //   } else {
