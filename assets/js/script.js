@@ -4,11 +4,13 @@ const choiceB = document.getElementById("choiceB");
 const choiceC = document.getElementById("choiceC");
 const choiceD = document.getElementById("choiceD");
 const right = document.querySelector(".correct");
-const wrong = document.querySelector(".incorrect");
 const timerElement = document.querySelector(".timer");
 const startButton = document.querySelector(".start-button");
 const resetButton = document.querySelector(".reset-button");
-const answerButtons = document.querySelectorAll(".answer-choice")
+const answerButtons = document.querySelectorAll(".answer-choice");
+const quitButton = document.querySelector(".quit");
+const nextButton = document.querySelector(".nxtButton");
+const scoreCard = document.querySelector(".score-container")
 
 
 //Array of questions
@@ -59,14 +61,14 @@ function startTimer() {
              endQuiz();
          }, 1000);
 }
-
 startButton.addEventListener("click", startQuiz);
 
 // The startQuiz function is called when the start button is clicked
 function startQuiz() {
+  startButton.style.display = "none";
   startTimer();
   displayQuestion();
-  
+
   // Prevents start button from being clicked when round is in progress
   startButton.disabled = true;
 };
@@ -86,7 +88,6 @@ function displayQuestion() {
       choiceButton.textContent = current.choices[i];
       choiceButton.style.display = "block";
   }
-
 }
 answerButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -95,7 +96,8 @@ answerButtons.forEach((button) => {
     var correctAnswer = currentQuestion.correctAnswer;
     console.log("selected answer:", selectedAnswer);
     console.log("correct answer:", correctAnswer);
-
+// show the next button
+    nextButton.style.display = "block";
     if (String(selectedAnswer).trim() === String(correctAnswer).trim()) {
       // handles correct answer
       console.log("correct")
@@ -104,54 +106,32 @@ answerButtons.forEach((button) => {
       console.log("incorrect");
     }
     // next question
-    currentQuestion++;
+    // currentQuestionIndex++;
+  
     displayQuestion();
+    answerButtons.forEach((button) => {
+      button.setAttribute("disabled", "true");
+    });
+
   });
 });
 
-// function checkAnswer(selectedIndex) {
-//   var checkQue = questions[currentQuestionIndex];
-//   if (selectedIndex === question.correctAnswer) {
-//       // Handle correct answer
-//   } else {
-//       // Handle wrong answer
-//   }
+// if next button is clicked
+nextButton.addEventListener("click", ()=>{
+     // Increment to the next question
+    currentQuestionIndex++;
+    displayQuestion();
 
-//   currentQuestionIndex++;
-//   displayQuestion();
-// }
-// // function displayQuestion() {
-//   if (currentQuestionIndex < questions.length) {
-//     const question = questions[currentQuestionIndex];
-//     questionElement.textContent = question.question;
-    
-//     choicesElement.innerHTML = "";
-//     question.choices.forEach((choice, index) => {
-//       const choiceButton = document.createElement("button");
-//       choiceButton.textContent = choice;
-//       choiceButton.addEventListener("click", () => checkAnswer(index));
-//       choicesElement.appendChild(choiceButton);
-//     });
-//   } else {
-//     endQuiz();
-//   }
-// };
-// 
+    nextButton.style.display = "none";
+    console.log("question completed");
 
-// // function startTimer() {
-// //   const timerInterval = setInterval(function() {
-// //       if (timeLeft > 0) {
-// //           timeLeft--;
-// //           timerElement.textContent = timeLeft + "s";
-// //       } else {
-// //           clearInterval(timerInterval);
-// //           endQuiz();
-// //       }
-// //   }, 1000);
-// // }
+    answerButtons.forEach((button) => {
+      button.removeAttribute("disabled");
+});
+});
 
-// function endQuiz() {
-//   // Handle quiz end, show results or feedback
-// }
+function endQuiz() {
+  // Handle quiz end, show results or feedback
+}
 
 // startQuiz();

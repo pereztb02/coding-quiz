@@ -14,7 +14,7 @@
 
     <main>
       <section>
-      </div>
+      <div>
       <button class="large-font start-button">Press Start</button>
       </div>
         <div class="quiz-container">
@@ -23,7 +23,10 @@
           <button class="answer-choice" id = "choiceA"></button>
           <button class="answer-choice" id = "choiceC"></button>
           <button class="answer-choice" id = "choiceD"></button>
-
+        </div>
+        <div>
+          <button class="nxtButton" style="display: none">Next Question</button>
+        </div>
       </section>
 
       <div class= "timer-container">
@@ -34,15 +37,13 @@
 
       <section>
         <div class="card results">
-          <div class = "score-container">
-          <div>
-          <h2>Correct Answers: <span class="correct">0 </span> </h2>
-          <h2>Wrong Answers: <span class="incorrect">0</span></h2>
+          <!-- // hide score container -->
+          <div class = "score-container" style="display: block">You're Done!
+          <span>You got <p class="correct">2</p> out of <p>6</p></span>
         </div>
-          <button class="reset-button">Reset Score</button>
+          <button class="reset-button" style="display: none">Reset Quiz</button>
+          <button class="quit" style="display: none">Quit Quiz</button>
       </div>
-        
-        
           </div>
         </div>
       </section>
