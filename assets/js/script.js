@@ -34,7 +34,7 @@ let questions = [
     correctAnswer: "False",
   },
   {
-    question: "<h1>Text</h1 > is the correct way of making a header in HTML.",
+    question: "<h1>Text</h1> is the correct way of making a header in HTML.",
     choices: ["True", "False"],
     correctAnswer: "True",
   },
@@ -43,8 +43,8 @@ let questions = [
       "Which of the following is the correct way of making a string in Java ?",
     choices: [
       "String 'Text'",
-      "String text = 'text'",
-      "String text = 'text'",
+      "'String' text = 'text'",
+      "String: text = 'text'",
       "String text = 'text'",
     ],
     correctAnswer: "String text = 'text'",
@@ -162,6 +162,10 @@ nextButton.addEventListener("click", () => {
     button.removeAttribute("disabled");
   });
 });
+//reset button functionality
+resetButton.addEventListener("click", startQuiz(),   console.log("reset button clicked")
+);
+
 //quit button functionality
 quitButton.addEventListener("click", () => {
   clearInterval(timerInterval);
@@ -169,14 +173,8 @@ quitButton.addEventListener("click", () => {
   timerElement.style.display = "none";
   endQuiz();
 });
-//reset button functionality
-resetButton.addEventListener("click", () => {
-  console.log("reset button clicked")
-  startTimer();
-  startQuiz();
-});
 function endQuiz() {
-  // Handle quiz end, show results or feedback
+  // Handle quiz end, show results and feedback
   console.log("quiz ended");
   console.log("your score: " + userScore + " out of " + questions.length);
   right.textContent = userScore;
