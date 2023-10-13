@@ -17,7 +17,7 @@
       <div>
       <button class="large-font start-button">Press Start</button>
       </div>
-        <div class="quiz-container">
+        <div class="quiz-container" style="display: none">
           <p class="large-font current-question"></p>
           <button class="answer-choice" id = "choiceB"></button>
           <button class="answer-choice" id = "choiceA"></button>
@@ -36,10 +36,10 @@
       </div>
 
       <section>
-        <div class="card results" style="display: none">
+        <div class="card results">
           <!-- // hide score container -->
           <div class = "score-container" style="display: none">You're Done!
-          <span>You got <p class="correct">2</p> out of <p>6</p></span>
+          <span>You got <p class="correct">2</p> out of <p class="decimal">6</p></span>
         </div>
           <button class="reset-button" style="display: none">Reset Quiz</button>
           <button class="quit" style="display: none">Quit Quiz</button>
