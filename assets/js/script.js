@@ -84,6 +84,7 @@ startButton.addEventListener("click", startQuiz);
 
 // The startQuiz function is called when the start button is clicked
 function startQuiz() {
+  console.log("started");
   //hide start quiz button onclick
   startButton.style.display = "none";
   //show quit quiz button onclick
@@ -160,11 +161,29 @@ nextButton.addEventListener("click", () => {
   // Enable the choice buttons for the next question
   answerButtons.forEach((button) => {
     button.removeAttribute("disabled");
+    // Change the button color back to white
+    button.style.backgroundColor = "white";
   });
 });
 //reset button functionality
-resetButton.addEventListener("click", startQuiz(),   console.log("reset button clicked")
-);
+resetButton.addEventListener("click", () => {   
+  console.log("reset button clicked")
+  clearInterval(timerInterval);
+  currentQuestionIndex = 0;
+  timerDuration = 15;
+  // /display score card
+  startButton.style.display = "block";
+
+  nextButton.style.display = "none";
+  //hide score card
+  scoreCard.style.display = "none";
+  //hide quiz container
+  quizContainer.style.display = "none";
+  //hide reset quiz button
+  resetButton.style.display = "none";
+  //show quit quiz button
+  quitButton.style.display = "block";
+});
 
 //quit button functionality
 quitButton.addEventListener("click", () => {
