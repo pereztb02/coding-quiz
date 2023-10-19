@@ -208,4 +208,5 @@ function endQuiz() {
   resetButton.style.display = "block";
   //hide quit quiz button
   quitButton.style.display = "none";
+  startButton.disabled = false;
 }
